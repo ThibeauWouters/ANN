@@ -2,33 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import torch.optim
-import scipy.io
 from torch import nn
-from typing import Callable
 from torch.utils.data import Dataset, DataLoader
+from typing import Callable
+
 
 
 # Get appropriate directories
 master_dir = os.getcwd()
-
-
-def generate_sine_data(step: float = 0.05, noise: bool = False, std: float = 0.2):
-    """
-    Generates training/test data for the second exercise where we try to approximate y=sin(x**2).
-    :param step: The step size i.e. spacing between the different points.
-    :param noise: Boolean indicating whether we train on noisy data.
-    :param std: Standard deviation of the noisy data.
-    :return: Tuple containing x values and corresponding function values.
-    """
-    # Generate x values
-    x = np.arange(0, 3*np.pi, step=step)
-    # Generate y values
-    y = np.sin(x**2)
-    # Add noise if so desired
-    if noise:
-        y += np.random.normal(loc=0, scale=std, size=y.shape)
-
-    return x, y
 
 
 class Trainer:
